@@ -1,0 +1,92 @@
+.header {
+    background-color: #A72828; /* Color de fondo del navbar */
+    color: white; /* Color del texto */
+    display: flex; /* Alineación horizontal de los elementos */
+    align-items: center; /* Centrar elementos verticalmente */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 50px;
+}
+
+.header img {
+    margin-right: 50px; /* Espacio entre el logo y los elementos del menú */
+    margin-left: 25px;
+}
+
+.header ul {
+    list-style: none; /* Remover los bullets de la lista */
+    display: flex; /* Alinear los elementos de la lista horizontalmente */
+    padding: 0; /* Remover el padding por defecto */
+    margin: 0; /* Remover el margen por defecto */
+}
+
+.header li {
+    margin-right: 20px; /* Espacio entre los elementos del menú */
+}
+
+.header a {
+    color: white; /* Color de los enlaces */
+    text-decoration: none; /* Remover el subrayado de los enlaces */
+    font-weight: bold; /* Hacer el texto un poco más grueso */
+}
+
+.header a:hover {
+    color: #ddd; /* Cambiar el color al pasar el mouse */
+}
+
+main{
+    display: flex; /* Alineación horizontal de los elementos */
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    margin-bottom: 50px; /* Espacio entre el main y el footer */
+
+}
+
+#boletos {
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
+    background: #bbbbbb; /* Color de fondo del main */
+    margin-right: 20px;
+    flex-grow: 1;
+}
+
+.infoBoletos{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /
+
+}
+
+.comprarBoletos{
+    justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+.cantidadBoletos{
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    width: 50px; /* Ancho del input */
+}
+
+
+#foto {
+    margin-right: 20px; /* Añade un margen a la derecha para separarlo del main */
+    width: 200px; /* Ocupa el 20% de la pantalla, ajusta según necesites */
+    flex-shrink: 0; /* Evita que se reduzca */
+    justify-content: center; /* Centra los elementos verticalmente */
+}
+
+#fotoPelicula{
+    border-radius: 10px; /* Redondea las esquinas del borde */
+    margin-right: 20px; /* Añade un margen a la derecha para separarlo del main */
+    width: 200px; /* Ocupa el 20% de la pantalla, ajusta según necesites */
+    flex-shrink: 0; /* Evita que se reduzca */
+
+}
+
+#infoSala{
+    margin-right: 10px; /* Añade un margen a la derecha para separarlo del main */
+    width: 200px; /* Ocupa el 20% de la pantalla, ajusta según necesites */
+    justify-content: center; /* Centra los elementos verticalmente */
+    background-color: #A72828;
+    border-radius: 1rem;
+
+}

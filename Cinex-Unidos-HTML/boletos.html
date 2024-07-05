@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <title>Cinex Unidos</title>
+    <link href="styles.css" rel="stylesheet">    
+    
 </head>
 <body>
-    <header>
-        <div>
+    <header class="header">
             <a href="cartelera.html">
                 <img href="cartelera.html"src="https://media.licdn.com/dms/image/C560BAQE5ZFs0-H2ayw/company-logo_200_200/0/1631331313753?e=2147483647&v=beta&t=aj8jehRCc-fLO4bwc0MyUNKLAyvyGK29skJnDIV6fVU"width="150" height="150" />
             </a>
@@ -15,52 +16,64 @@
                 <li><a href="proximamente.html">Proximamente</a></li>
                 <li><a href="promociones.html">Promociones</a></li>
             </ul>
-        </div>
     </header>
-    <aside>
-        <img name="Godzilla x Kong" src="https://cinesunidosweb.blob.core.windows.net/poster/HO00004926.jpg" width="200" height="300">
+    <main>
+    <aside id="foto">
+        <img id="fotoPelicula" name="Godzilla x Kong" src="https://cinesunidosweb.blob.core.windows.net/poster/HO00004926.jpg" width="200" height="300">
         <p>Calificación: 7.5/10</p>
     </aside>
-    <main>
+    <div id="boletos">
         <h2>Godzilla x Kong</h2>
         <h4>DOB| 101 Minutos | Animación | A </h4>
         <section>
             <h3>Seleccione sus boletos</h3>
             <form action="BoletosDulceria.html">
+                <section class="infoBoletos">
                 <label>
                     Popular Dig<br>
                     Precio Boleto: Bs. 19,14<br>
                     Otros cargos: Bs. 47,34
-                    <br>Cantidad:
                 </label>
-                <button type="button">-</button><input type="number" name="cantidadPopularDig" min="0"><button
-                    type="button">+</button>
-                <br>
-                <label>
-                    3era Edad<br>
+                <section class="comprarBoletos">
+                    <p>Cantidad:</p>
+                    <button type="button">-</button>
+                    <input class="cantidadBoletos" type="number" name="cantidadPopularDig" min="0">
+                    <button type="button">+</button>
+                </section>
+                </section>
+                <section class="infoBoletos">
+                    <label>
+                        3era Edad<br>
+                        Precio Boleto: Bs. 9,14<br>
+                        Otros cargos: Bs. 22,34
+                    </label>
+                    <section class="comprarBoletos">
+                        <p>Cantidad:</p>
+                        <button type="button">-</button>
+                        <input class="cantidadBoletos" type="number" name="cantidadPopularDig" min="0">
+                        <button type="button">+</button>
+                    </section>
+                    </section>
+                    <section class="infoBoletos">
+                        <label>
+                            Niño<br>
                     Precio Boleto: Bs. 9,14<br>
                     Otros cargos: Bs. 22,34
-                    <br>Cantidad:
-                </label>
-                <button type="button">-</button><input type="number" name="cantidad3eraEdad" min="0"><button
-                    type="button">+</button>
-                <br>
-                <label>
-                    Niño<br>
-                    Precio Boleto: Bs. 9,14<br>
-                    Otros cargos: Bs. 22,34
-                    <br>Cantidad:
-                    <button type="button">-</button><input type="number" name="cantidadNiño" min="0"><button
-                        type="button">+</button>
-                </label>
-                <br>
-                <p>Total:00.00bs</p>
+                        </label>
+                        <section class="comprarBoletos">
+                            <p>Cantidad:</p>
+                            <button type="button">-</button>
+                            <input class="cantidadBoletos" type="number" name="cantidadPopularDig" min="0">
+                            <button type="button">+</button>
+                        </section>
+                        </section>
+                <p>Total:</p>
                 <button type="submit">Confirmar</button>
             </form>
             <a href="sinopsis.html">Atrás</a>
         </section>
-    </main>
-    <aside>
+    </div>
+    <aside id="infoSala">
         <h3>Función Seleccionada</h3>
         <section>
             <ul>
@@ -74,6 +87,7 @@
             </ul>
         </section>
     </aside>
+    </main>
 </body>
 
 </html>
