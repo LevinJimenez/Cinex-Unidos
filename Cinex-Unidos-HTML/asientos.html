@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cinex Unidos</title>
+    <link href="stylesasiento.css" rel="stylesheet">    
+    
+</head>
+<body>
+    <header class="header">
+            <a href="cartelera.html">
+                <img href="cartelera.html"src="https://media.licdn.com/dms/image/C560BAQE5ZFs0-H2ayw/company-logo_200_200/0/1631331313753?e=2147483647&v=beta&t=aj8jehRCc-fLO4bwc0MyUNKLAyvyGK29skJnDIV6fVU"width="150" height="150" />
+            </a>
+            <ul>
+                <li><a href="cartelera.html">Cartelera</a></li>
+                <li><a href="proximamente.html">Proximamente</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+            </ul>
+    </header>
+    <main id="seleccionar-cine">
+        <h2>Selecciona el cine de tu preferencia</h2>
+        <div id="cines-contenedor">
+
+        </div>
+
+            
+    </main>
+    <main id="seleccionar-horario" style="display:none">
+        <h2>Selecciona el horario de tu preferencia</h2>
+        <h3 id="nombreCine"></h3>
+        <div id="horarios-contenedor">
+
+        </div>
+    </main>
+    <main id="contenedor-asientos" style="display:none">
+        <div id="seleccion-asientos">
+            <h2>Selecciona tu(s) asiento(s)</h2>
+            <div id="sala-cine">
+            </div>
+        </div>
+        <aside id="información pelicula">
+            <h3>Detalles</h3>
+            <img id="imagenPelicula" src="" alt="Imagen de la película" />
+            <p id="nombrePelicula"></p>
+            <p id="clasificacionPelicula"></p>
+            <p id="duracionPelicula"></p>
+            <p id="nombreCinePelicula"></p>
+            <p id="horaFuncion"></p>
+            <p id="salaFuncion"></p>
+            <button id="pagar">Pagar boletos</button>
+        </aside>
+        
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
