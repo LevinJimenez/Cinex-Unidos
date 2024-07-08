@@ -188,7 +188,7 @@ function mostrarCines(cines) {
 function colocarHorariosPorPelicula(cine) {
     const horariosContenedor = document.getElementById('horarios-contenedor');
     horariosContenedor.innerHTML = '';
-
+  console.log(cine);
 // Paso 1: Crear estructura para almacenar películas y sus horarios por sala
 const peliculas = {};
 
@@ -201,8 +201,9 @@ cine.auditoriums.forEach(sala => {
                 nombre: funcion.movie.name,
                 horarios: [],
                 poster: funcion.movie.poster,
+                salaId: sala.id,
                 
-                 // Incluir URL del póster aquí
+                
             };
         }
         peliculas[peliculaId].horarios.push({
@@ -217,6 +218,7 @@ cine.auditoriums.forEach(sala => {
 
 // Paso 5: Mostrar películas, sus horarios, salas y póster
 Object.values(peliculas).forEach(pelicula => {
+  
     const peliculaContenedor = document.createElement('div');
     peliculaContenedor.className = 'pelicula-contenedor';
 
@@ -226,7 +228,6 @@ Object.values(peliculas).forEach(pelicula => {
     posterPelicula.alt = `Póster de ${pelicula.nombre}`;
     posterPelicula.className = 'poster-pelicula';
     peliculaContenedor.appendChild(posterPelicula);
-
     const tituloPelicula = document.createElement('h3');
     tituloPelicula.textContent = pelicula.nombre;
     peliculaContenedor.appendChild(tituloPelicula);
@@ -244,23 +245,22 @@ Object.values(peliculas).forEach(pelicula => {
             console.log(cine.id);
             console.log(horario.idSala);
             console.log(horario.funcionId);
-            
-            obtenerInformacionSala(cine.id,horario.idSala,horario.funcionId,pelicula.nombreSala);
+            obtenerInformacionSala(cine.id,horario.idSala,horario.funcionId);
             //crearLayoutAsientos(InfoSala);
             //encontrarFilaConMayorNumeroAsientos(InfoSala);
         });
         peliculaContenedor.appendChild(horarioCard);
     });
-
     horariosContenedor.appendChild(peliculaContenedor);
 });
 }
-async function obtenerInformacionSala(idCine,idSala,idFuncion,sala){
+async function obtenerInformacionSala(idCine,idSala,idFuncion){
     try {
         // Usar await para esperar el resultado de obtenerInfoSalaCine
         const InfoSala = await obtenerInfoFuncionSalaCine(idCine,idSala,idFuncion);
-        crearLayoutAsientos(InfoSala);
-        colocarDatospelicula(InfoSala);
+        console.log(InfoSala);
+        crearLayoutAsientos(InfoSala,idSala);
+        colocarDatospelicula(InfoSala,idSala);
     } catch (error) {
         // Manejar cualquier error que pueda ocurrir durante la llamada
         console.error('Error al obtener la información de la sala:', error);
@@ -305,7 +305,7 @@ addEventListener('DOMContentLoaded', () => {
 
     return filaConMayorNumeroAsientos;
 }
-  function crearLayoutAsientos(datosSala) {
+  function crearLayoutAsientos(datosSala,idSala) {
     const salaCine = document.getElementById('sala-cine');
     salaCine.innerHTML = '';
   
@@ -383,7 +383,7 @@ addEventListener('DOMContentLoaded', () => {
     return asientoHTML;
   }
   
-  function colocarDatospelicula(datosSala) {
+  function colocarDatospelicula(datosSala,idSala) {
     // Verificar que datosSala y datosSala.movie existan
     if (!datosSala || !datosSala.movie) {
       console.error('Datos de la sala o película no proporcionados o incompletos');
@@ -411,6 +411,6 @@ addEventListener('DOMContentLoaded', () => {
     clasificacionPelicula.textContent = `Clasificación: ${rating}`;
     duracionPelicula.textContent = `Duración: ${runningTime} minutos`; 
     horaFuncion.textContent = `Hora de la función: ${startTime}`;
-    salaFuncion.textContent = `Sala: ${id}`;
+    salaFuncion.textContent = `Sala: ${idSala}`;
   }
  
