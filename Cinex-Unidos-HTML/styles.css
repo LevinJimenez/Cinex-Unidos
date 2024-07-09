@@ -1,10 +1,10 @@
-.header {
-    background-color: #A72828; /* Color de fondo del navbar */
+
+header {
+    background-color: #a72828d8; /* Color de fondo del navbar */
     color: white; /* Color del texto */
     display: flex; /* Alineación horizontal de los elementos */
     align-items: center; /* Centrar elementos verticalmente */
     padding: 10px; /* Espaciado interno */
-    margin-bottom: 50px;
 }
 
 .header img {
@@ -20,13 +20,14 @@
 }
 
 .header li {
-    margin-right: 20px; /* Espacio entre los elementos del menú */
+    margin-right: 50px; /* Espacio entre los elementos del menú */
 }
 
 .header a {
     color: white; /* Color de los enlaces */
     text-decoration: none; /* Remover el subrayado de los enlaces */
-    font-weight: bold; /* Hacer el texto un poco más grueso */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 
 .header a:hover {

@@ -6,9 +6,27 @@
   }
   
   h1 {
-    font-size: 2em;
     margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  h3 {
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
   #cines-contenedor {
     display: flex;
     flex-wrap: wrap;
@@ -19,7 +37,7 @@
     border-radius: 4px;
     overflow: hidden;
     margin: 10px;
-    width: 200px; /* Ajusta según necesites */
+    width: 400px; /* Ajusta según necesites */
 }
 
 .cine-card img {
@@ -31,28 +49,66 @@
     padding: 10px;
     background-color: #f0f0f0;
 }
-  #contenedor-asientos{
-    
-    display: flex; /* Enable Flexbox layout for the container */
-    flex-direction: row; /* Arrange items in a row */
-    
-    justify-content: space-between; /* Distribute space between items */
-    align-items: flex-start; /* Align items vertically at the top */
-  }
-  #seleccion-asientos {
-    flex-basis: 60%; /* Set width of "seleccion-asientos" to 60% */
-    padding: 20px;
-  }
-  
-  aside {
-    flex-basis: 40%; /* Set width of aside to 40% */
-    padding: 20px;
-    border: 2px solid #ccc;
-  }
+
+.cine-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.horario-card {
+  background-color: #FF7A7A;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 3px;
+  width: 150px; /* Ajusta según necesites */
+  height: 20px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horario-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+
+#siu{
+  background-color: #F1F1F1;
+  padding-bottom: 50px;    
+  padding-top: 50px;
+  display: flex;
+}
+
+#seleccion-asientos, #informacion-pelicula {
+  width: 50%; /* Asigna a cada elemento hijo el 50% del ancho del contenedor */
+  box-sizing: border-box; /* Asegura que padding y border estén incluidos en el ancho especificado */
+}
+
+#seleccion-asientos{
+  align-items: flex-start; /* Alinea los elementos al inicio (izquierda) */
+  justify-content: center; /* Centra los elementos verticalmente */
+  padding-left: 150px; /* Añade un padding a la izquierda */
+}
+
+#informacion-pelicula{
+  display: flex;
+}
+
+#info-pelicula{
+  margin-left: 10px;
+  padding: 20px;
+  font-size: 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
 
   #imagenPelicula {
-    width: 50%; 
-    margin-bottom: 20px;
+    width: 50%;
+    height: auto; 
+
   }
   #horarios-contenedor{
     display: flex;
@@ -66,6 +122,8 @@
     display: flex;  
     flex-direction: column; 
     align-items: center; 
+    background-color: #a72828d8;
+    border-radius: 2rem;
 }
 
 .poster-pelicula{
@@ -73,18 +131,39 @@
     height: auto; 
     min-width: 150px; 
     min-height: 225px; 
+    border-radius: 2rem 2rem 0 0;
 }
   
   #pagar{
     margin: 20px auto; /* Center the button horizontally */
     display: block; /* Make the button a block element */
-    width: 150px; /* Adjust width as needed */
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    background-color: #a72828d8; /* Color de fondo del botón */ 
+    font-size: 20px;
+    color: white; /* Color del texto del botón */
+    border: none; /* Remueve el borde del botón */
+    border-radius: 5px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */   
   }
+
+  #atras{
+    margin: 20px auto; /* Center the button horizontally */
+    display: block; /* Make the button a block element */
+    width: 120px; /* Adjust width as needed */
+    padding: 10px;
+    height: 50px;
+    background-color: #a72828d8; /* Color de fondo del botón */ 
+    font-size: 20px;
+    color: white; /* Color del texto del botón */
+    border: none; /* Remueve el borde del botón */
+    border-radius: 5px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */   
+  }
+
+  #pagar:hover, #atras:hover {
+    background-color: #a72828; /* Cambia el color al pasar el mouse */
+  }   
 
 .asiento {
     width: 30px; /* Ancho fijo para todos los asientos */
@@ -120,7 +199,7 @@
   
   .fila {
     display: flex;
-    align-items: left;
+
     gap:5px;
   }
   
@@ -128,9 +207,10 @@
   #sala-cine {
     display: flex; /* Habilitar flexbox para el contenedor principal */
     flex-direction: column; /* Alinear filas verticalmente */
-    align-items: left; /* Alinear filas verticalmente en el centro */
     gap: 10px; /* Espacio entre filas */
+    width: 100%; /* Ajustar según necesidades */
   }
+  
   .letra-fila {
     width:20px;
     font-size: 18px;
@@ -171,20 +251,31 @@
     margin-top: 20px;
   }
   
+  main#seleccionar-cine {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
   
+  #cines-contenedor {
+    margin-top: 20px; /* Ajusta este valor según sea necesario */
+  }
 
 
+  body {
+    margin: 0; /* Elimina los márgenes por defecto */
+    font-family: Arial, Helvetica, sans-serif; /* Agrega la fuente para todos los textos */
+}
 
-
-
-
-  .header {
-    background-color: #A72828; /* Color de fondo del navbar */
+header {
+    background-color: #a72828d8; /* Color de fondo del navbar */
     color: white; /* Color del texto */
     display: flex; /* Alineación horizontal de los elementos */
     align-items: center; /* Centrar elementos verticalmente */
     padding: 10px; /* Espaciado interno */
-    margin-bottom: 50px;
+    border-radius:  0 0 2rem 2rem;
 }
 
 .header img {
@@ -200,73 +291,25 @@
 }
 
 .header li {
-    margin-right: 20px; /* Espacio entre los elementos del menú */
+    margin-right: 50px; /* Espacio entre los elementos del menú */
 }
 
 .header a {
     color: white; /* Color de los enlaces */
     text-decoration: none; /* Remover el subrayado de los enlaces */
-    font-weight: bold; /* Hacer el texto un poco más grueso */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
 }
 
 .header a:hover {
     color: #ddd; /* Cambiar el color al pasar el mouse */
 }
 
-main{
-    display: flex; /* Alineación horizontal de los elementos */
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
-    margin-bottom: 50px; /* Espacio entre el main y el footer */
-
+#logo:hover {
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el logo */
 }
 
-#boletos {
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: flex-start; /* Alinea los elementos al inicio verticalmente */
-    background: #bbbbbb; /* Color de fondo del main */
-    margin-right: 20px;
-    flex-grow: 1;
+home:hover {
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el logo */
 }
 
-.infoBoletos{
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /
-
-}
-
-.comprarBoletos{
-    justify-content: center; /* Centra los elementos horizontalmente */
-}
-
-.cantidadBoletos{
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
-    width: 50px; /* Ancho del input */
-}
-
-
-#foto {
-    margin-right: 20px; /* Añade un margen a la derecha para separarlo del main */
-    width: 200px; /* Ocupa el 20% de la pantalla, ajusta según necesites */
-    flex-shrink: 0; /* Evita que se reduzca */
-    justify-content: center; /* Centra los elementos verticalmente */
-}
-
-#fotoPelicula{
-    border-radius: 10px; /* Redondea las esquinas del borde */
-    margin-right: 20px; /* Añade un margen a la derecha para separarlo del main */
-    width: 200px; /* Ocupa el 20% de la pantalla, ajusta según necesites */
-    flex-shrink: 0; /* Evita que se reduzca */
-
-}
-
-#infoSala{
-    margin-right: 10px; /* Añade un margen a la derecha para separarlo del main */
-    width: 200px; /* Ocupa el 20% de la pantalla, ajusta según necesites */
-    justify-content: center; /* Centra los elementos verticalmente */
-    background-color: #A72828;
-    border-radius: 1rem;
-
-}
