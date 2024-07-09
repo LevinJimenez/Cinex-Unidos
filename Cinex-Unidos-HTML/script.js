@@ -118,10 +118,10 @@ function infoAsiento(parametrosSala) {
   const data = JSON.parse(event.data); 
   console.log(data);
    if (data.result === "SEAT_RESERVED") {
-    console.log(data);  
+      
     recargarAsientos(data.seat,'reservado',parametrosSala);      
     } else if (data.result === "SEAT_RELEASED") {
-      console.log(data);  
+       
       recargarAsientos(data.seat,'disponible',parametrosSala); 
     }      
   
@@ -389,10 +389,8 @@ addEventListener('DOMContentLoaded', () => {
         asientoHTML.classList.add('ocupado');
         break;
       case 2:
-        asientoHTML.classList.add('reservado');
-        asientoHTML.onclick = () => {
-          cancelarReserva(parametrosSala,`${fila}${numeroAsiento}`);      
-        };
+        asientoHTML.classList.add('reservado3ro');
+        
         break;
       default:
         console.warn(`Unknown seat value: ${estadoAsiento}`);

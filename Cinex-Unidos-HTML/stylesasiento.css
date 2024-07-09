@@ -60,7 +60,7 @@
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 3px;
-  width: 150px; /* Ajusta según necesites */
+  width: 175px; /* Ajusta según necesites */
   height: 20px;
   text-align: center;
   color: white;
@@ -75,7 +75,7 @@
 }
 
 
-#siu{
+#datos-pelicula{
   background-color: #F1F1F1;
   padding-bottom: 50px;    
   padding-top: 50px;
@@ -123,8 +123,7 @@
 }
 
 .pelicula-contenedor {
-    flex: 1 1 200px; 
-    margin: 10px; 
+    flex: 0 0 350px; 
     display: flex;  
     flex-direction: column; 
     align-items: center; 
@@ -243,6 +242,10 @@
   
   .asiento.ocupado {
     background-color: red;
+  }
+  .asiento.reservado3ro {
+    background-color: #0667b6;
+    
   }
   
   .asiento.reservado {
