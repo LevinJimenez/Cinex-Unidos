@@ -116,12 +116,15 @@ function infoAsiento(parametrosSala) {
   const evtSource = new EventSource(baseUrl + 'theatres/' + parametrosSala.idCine + '/auditoriums/' + parametrosSala.idSala + '/showtimes/' + parametrosSala.idFuncion +'/reservation-updates');
   evtSource.onmessage = (event) => { 
   const data = JSON.parse(event.data); 
-   if (data.message === "SEAT_RESERVED") {
-    recargarAsientos(data.seatId,'ocupado',parametrosSala);        
-    } else if (data.message === "SEAT_UNRESERVED") {
-      recargarAsientos(data.seatId,'disponible',parametrosSala);   
+  console.log(data);
+   if (data.result === "SEAT_RESERVED") {
+    console.log(data);  
+    recargarAsientos(data.seat,'reservado',parametrosSala);      
+    } else if (data.result === "SEAT_RELEASED") {
+      console.log(data);  
+      recargarAsientos(data.seat,'disponible',parametrosSala); 
     }      
-  console.log(data);  
+  
       
    
   };
@@ -400,7 +403,7 @@ addEventListener('DOMContentLoaded', () => {
   }
   
 function recargarAsientos(idAsiento,accion,parametrosSala) {
- console.log(idAsiento);
+  console.log(idAsiento);
   const asientoElement = document.getElementById(idAsiento);
   const classList = asientoElement.classList;
 
