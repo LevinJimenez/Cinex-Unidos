@@ -68,9 +68,9 @@ async function obtenerInfoFuncionSalaCine(idCine, idSala, idFuncion) {
     }
 }
 
-function reservarAsiento(idCine, idSala, idFuncion,seatId){
-
-    fetch(baseUrl + 'theatres/' + idCine + '/auditoriums/' + idSala + '/showtimes/' + idFuncion + '/reserve', {
+function reservarAsiento(parametrosSala,seatId){
+  
+    fetch(baseUrl + 'theatres/' + parametrosSala.idCine + '/auditoriums/' + parametrosSala.idSala + '/showtimes/' + parametrosSala.idFuncion + '/reserve', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -83,6 +83,7 @@ function reservarAsiento(idCine, idSala, idFuncion,seatId){
         if (!response.ok) {
           throw new Error('Error al reservar asiento');
         }
+        recargarAsientos(seatId,'reservado',parametrosSala);
         return response.json();
       })
       .then(data => console.log(data))
@@ -90,8 +91,8 @@ function reservarAsiento(idCine, idSala, idFuncion,seatId){
 
 
 }
-function cancelarReserva(idCine, idSala,idFuncion,seatId){
-    fetch(baseUrl + 'theatres/' + idCine + '/auditoriums/' + idSala + '/showtimes/' + idFuncion + '/reserve', {
+function cancelarReserva(parametrosSala,seatId){
+    fetch(baseUrl + 'theatres/' + parametrosSala.idCine + '/auditoriums/' + parametrosSala.idSala + '/showtimes/' + parametrosSala.idFuncion + '/reserve', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -104,25 +105,28 @@ function cancelarReserva(idCine, idSala,idFuncion,seatId){
         if (!response.ok) {
           throw new Error('Error al cancelar reserva');
         }
+        recargarAsientos(seatId,'disponible',parametrosSala);
         return response.json();
       })
       .then(data => console.log(data))
       .catch(error => console.error('Error en cancelarReserva:', error));
 }
-function infoAsiento(idCine,idSala,idFuncion){
-    fetch(baseUrl + 'theatres/' + idCine + '/auditoriums/' + idSala + '/showtimes/' + idFuncion +'reservation-updates',{
-    method : 'GET',
+function infoAsiento(parametrosSala) {
+
+  const evtSource = new EventSource(baseUrl + 'theatres/' + parametrosSala.idCine + '/auditoriums/' + parametrosSala.idSala + '/showtimes/' + parametrosSala.idFuncion +'/reservation-updates');
+  evtSource.onmessage = (event) => { 
+  const data = JSON.parse(event.data); 
+   if (data.message === "SEAT_RESERVED") {
+    recargarAsientos(data.seatId,'ocupado',parametrosSala);        
+    } else if (data.message === "SEAT_UNRESERVED") {
+      recargarAsientos(data.seatId,'disponible',parametrosSala);   
+    }      
+  console.log(data);  
+      
    
-    })
-    .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al obtener información del asiento');
-        }
-        return response.json();
-    })
-
-
+  };
 }
+
 
 // Suponiendo que obtenerCines es una función asíncrona que devuelve la lista de cines
 // Marcar la función como async para usar await
@@ -259,7 +263,12 @@ async function obtenerInformacionSala(idCine,idSala,idFuncion){
         // Usar await para esperar el resultado de obtenerInfoSalaCine
         const InfoSala = await obtenerInfoFuncionSalaCine(idCine,idSala,idFuncion);
         console.log(InfoSala);
-        crearLayoutAsientos(InfoSala,idSala);
+        const parametrosSala = {
+          idCine: idCine,
+          idSala: idSala,
+          idFuncion: idFuncion
+      };
+        crearLayoutAsientos(InfoSala,idSala,parametrosSala);
         colocarDatospelicula(InfoSala,idSala);
     } catch (error) {
         // Manejar cualquier error que pueda ocurrir durante la llamada
@@ -284,14 +293,13 @@ addEventListener('DOMContentLoaded', () => {
 
 
 
-  function encontrarFilaConMayorNumeroAsientos(datosSala) {
+  function encontrarNumeroMaximoAsientos(datosSala) {
     // Verificar si datosSala o datosSala.seats no están definidos
     if (!datosSala || !datosSala.seats) {
         console.error('datosSala o datosSala.seats no están definidos');
-        return ''; // O manejar el error de manera adecuada
+        return 0; // O manejar el error de manera adecuada
     }
 
-    let filaConMayorNumeroAsientos = '';
     let numeroMaximoAsientos = 0;
 
     for (const fila in datosSala.seats) {
@@ -299,18 +307,17 @@ addEventListener('DOMContentLoaded', () => {
 
         if (numeroAsientosFila > numeroMaximoAsientos) {
             numeroMaximoAsientos = numeroAsientosFila;
-            filaConMayorNumeroAsientos = fila;
         }
     }
 
-    return filaConMayorNumeroAsientos;
+    return numeroMaximoAsientos;
 }
-  function crearLayoutAsientos(datosSala,idSala) {
+  function crearLayoutAsientos(datosSala,idSala,parametrosSala ) {
     const salaCine = document.getElementById('sala-cine');
     salaCine.innerHTML = '';
   
     // Asegúrate de que esta función maneje la nueva estructura de datosSala
-    const numeroMaximoAsientos = encontrarFilaConMayorNumeroAsientos(datosSala);
+    const numeroMaximoAsientos = encontrarNumeroMaximoAsientos(datosSala);
     console.log(numeroMaximoAsientos);
   
     // Si la estructura de datosSala.seats ha cambiado, modifica este bucle
@@ -329,7 +336,7 @@ addEventListener('DOMContentLoaded', () => {
         for (let asientoIndex = 0; asientoIndex < asientosFila.length; asientoIndex++) {
             const asiento = asientosFila[asientoIndex];
             // Asegúrate de que crearAsiento maneje cualquier cambio en la estructura de asiento
-            const asientoHTML = crearAsiento(fila, asientoIndex+1, asiento);
+            const asientoHTML = crearAsiento(fila,asientoIndex,asiento,parametrosSala);
             filaContenedor.appendChild(asientoHTML);
         }
   
@@ -348,19 +355,22 @@ addEventListener('DOMContentLoaded', () => {
     for (let numeroAsiento = 0; numeroAsiento < numeroMaximoAsientos; numeroAsiento++) {
         const numeroElemento = document.createElement('div');
         numeroElemento.classList.add('numero-asiento');
-        numeroElemento.textContent = numeroAsiento + 1; // Asegúrate de que esto refleje la nueva estructura
+        numeroElemento.textContent = numeroAsiento ; 
         filaNumeros.appendChild(numeroElemento);
     }
   
     salaCine.appendChild(filaNumeros);
+    infoAsiento(parametrosSala);
 }
   
   // Function to create an individual seat element
-  function crearAsiento(fila, numeroAsiento, estadoAsiento) {
+  function crearAsiento(fila, numeroAsiento, estadoAsiento,parametrosSala) {
     const asientoHTML = document.createElement('div');
     asientoHTML.classList.add('asiento');
     asientoHTML.dataset.asiento = `${fila}${numeroAsiento}`; // Store seat ID
-  
+    asientoHTML.id = `${fila}${numeroAsiento}`; // Store seat ID
+    
+     
     // Apply styling based on seat availability
     switch (estadoAsiento) {
       case -1:
@@ -368,12 +378,18 @@ addEventListener('DOMContentLoaded', () => {
         break;
       case 0:
         asientoHTML.classList.add('disponible');
+        asientoHTML.onclick = () => {
+          reservarAsiento(parametrosSala,`${fila}${numeroAsiento}`);      
+        };
         break;
       case 1:
         asientoHTML.classList.add('ocupado');
         break;
       case 2:
         asientoHTML.classList.add('reservado');
+        asientoHTML.onclick = () => {
+          cancelarReserva(parametrosSala,`${fila}${numeroAsiento}`);      
+        };
         break;
       default:
         console.warn(`Unknown seat value: ${estadoAsiento}`);
@@ -383,6 +399,42 @@ addEventListener('DOMContentLoaded', () => {
     return asientoHTML;
   }
   
+function recargarAsientos(idAsiento,accion,parametrosSala) {
+ console.log(idAsiento);
+  const asientoElement = document.getElementById(idAsiento);
+  const classList = asientoElement.classList;
+
+  switch (accion) {
+   // case 'no-disponible':     
+    //  asientoElement.style.backgroundColor = 'green';
+     // asientoElement.onclick = () => {
+      // seleccionarAsiento(asientoElement.dataset.fila, asientoElement.dataset.numeroAsiento);
+    //  };
+    //  break;
+    case 'disponible':
+      classList.remove('reservado'); // Eliminar una clase
+      classList.add('disponible'); // Añadir una clase
+      
+      asientoElement.onclick = () => {
+        reservarAsiento(parametrosSala,idAsiento);      
+      };
+      break;
+    case 'ocupado':
+      classList.add('ocupado');
+      break;
+    case 'reservado':
+      classList.remove('disponible'); // Eliminar una clase
+      classList.add('reservado'); // Añadir una clase
+      
+      asientoElement.onclick = () => {
+        cancelarReserva(parametrosSala,idAsiento);      
+      };
+        break;
+    default:
+      // Acciones para un asiento con una clase no manejada
+      console.warn('Clase de asiento no reconocida:', classList.value);
+  }
+  }
   function colocarDatospelicula(datosSala,idSala) {
     // Verificar que datosSala y datosSala.movie existan
     if (!datosSala || !datosSala.movie) {
@@ -414,29 +466,4 @@ addEventListener('DOMContentLoaded', () => {
     salaFuncion.textContent = `Sala: ${idSala}`;
   }
  
-  const logo = document.getElementById('logo');
-  logo.addEventListener('click', () => {
-    document.getElementById('seleccionar-cine').style.display = 'block';
-    document.getElementById('seleccionar-horario').style.display = 'none';
-    document.getElementById('contenedor-asientos').style.display = 'none';
-    document.getElementById('nombreCine').textContent = cine.name;
-    colocarHorariosPorPelicula(cine);
-  });
-
-  const home = document.getElementById('home');
-  home.addEventListener('click', () => {
-    document.getElementById('seleccionar-cine').style.display = 'block';
-    document.getElementById('seleccionar-horario').style.display = 'none';
-    document.getElementById('contenedor-asientos').style.display = 'none';
-    document.getElementById('nombreCine').textContent = cine.name;
-    colocarHorariosPorPelicula(cine);
-  });
-
-  const atras = document.getElementById('atras');
-  atras.addEventListener('click', () => {
-    document.getElementById('seleccionar-cine').style.display = 'none';
-    document.getElementById('seleccionar-horario').style.display = 'block';
-    document.getElementById('contenedor-asientos').style.display = 'none';
-    document.getElementById('nombreCine').textContent = cine.name;
-    colocarHorariosPorPelicula(cine);
-  });
+ 
