@@ -95,19 +95,25 @@
 
 #informacion-pelicula{
   display: flex;
+  background-color: #a72828d8;
+  margin-left: 20px;
+  border-radius: 2rem;
 }
 
 #info-pelicula{
   margin-left: 10px;
+  margin-top: 80px;
   padding: 20px;
   font-size: 2rem;
+  color: white;
   flex-direction: column;
   justify-content: center;
 }
 
   #imagenPelicula {
     width: 50%;
-    height: auto; 
+    height: auto;
+    border-radius: 2rem 0 0 2rem; 
 
   }
   #horarios-contenedor{
@@ -136,10 +142,11 @@
   
   #pagar{
     margin: 20px auto; /* Center the button horizontally */
+    margin-top: 100px;
     display: block; /* Make the button a block element */
     width: 200px;
     height: 50px;
-    background-color: #a72828d8; /* Color de fondo del botón */ 
+    background-color: #FF7A7A; /* Color de fondo del botón */ 
     font-size: 20px;
     color: white; /* Color del texto del botón */
     border: none; /* Remueve el borde del botón */
@@ -149,11 +156,12 @@
 
   #atras{
     margin: 20px auto; /* Center the button horizontally */
+    margin-top: 20px;
     display: block; /* Make the button a block element */
     width: 120px; /* Adjust width as needed */
     padding: 10px;
     height: 50px;
-    background-color: #a72828d8; /* Color de fondo del botón */ 
+    background-color: #FF7A7A; /* Color de fondo del botón */ 
     font-size: 20px;
     color: white; /* Color del texto del botón */
     border: none; /* Remueve el borde del botón */
@@ -162,7 +170,7 @@
   }
 
   #pagar:hover, #atras:hover {
-    background-color: #a72828; /* Cambia el color al pasar el mouse */
+    opacity: 0.8;
   }   
 
 .asiento {

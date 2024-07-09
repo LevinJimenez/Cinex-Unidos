@@ -465,5 +465,30 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     horaFuncion.textContent = `Hora de la función: ${startTime}`;
     salaFuncion.textContent = `Sala: ${idSala}`;
   }
- 
- 
+
+  const logo = document.getElementById('logo');
+  logo.addEventListener('click', () => {
+    document.getElementById('seleccionar-cine').style.display = 'block';
+    document.getElementById('seleccionar-horario').style.display = 'none';
+    document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('nombreCine').textContent = cine.name;
+    colocarHorariosPorPelicula(cine);
+  });
+
+  const home = document.getElementById('home');
+  home.addEventListener('click', () => {
+    document.getElementById('seleccionar-cine').style.display = 'block';
+    document.getElementById('seleccionar-horario').style.display = 'none';
+    document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('nombreCine').textContent = cine.name;
+    colocarHorariosPorPelicula(cine);
+  });
+
+  const atras = document.getElementById('atras');
+  atras.addEventListener('click', () => {
+    document.getElementById('seleccionar-cine').style.display = 'none';
+    document.getElementById('seleccionar-horario').style.display = 'block';
+    document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('nombreCine').textContent = cine.name;
+    colocarHorariosPorPelicula(cine);
+  });
