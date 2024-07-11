@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Cinex Unidos</title>
+    <link rel="stylesheet" href="stylesasiento.css" />
+    <link rel="stylesheet" href="chat.css" />
+</head>
+
+<body>
+    <header class="header">
+        <a id="logo">
+            <img src="https://modulo7.ucab.edu.ve/courses/3510/files/394832/preview" width="110" height="80" />
+        </a>
+        <ul>
+            <li><a id="home">CINES EN TU CIUDAD</a></li>
+        </ul>
+        <a id="help">SOPORTE<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+            </svg></a>
+    </header>
+    <main id="seleccionar-cine">
+        <h1>Selecciona el cine de tu preferencia</h1>
+        <div id="cines-contenedor">
+        </div>
+    </main>
+    <main id="seleccionar-horario" style="display:none">
+        <h1 id="nombreCine"></h1>
+        <h2>Selecciona el horario de tu preferencia</h2>
+        <div id="horarios-contenedor">
+        </div>
+    </main>
+    <main id="contenedor-asientos" style="display:none">
+        <section id="datos-pelicula">
+            <aside id="informacion-pelicula">
+                <img id="imagenPelicula" class="poster-pelicula" />
+                <div id="info-pelicula">
+                    <p id="nombrePelicula"></p>
+                    <p id="clasificacionPelicula"></p>
+                    <p id="duracionPelicula"></p>
+                    <p id="nombreCinePelicula"></p>
+                    <p id="horaFuncion"></p>
+                    <p id="salaFuncion"></p>
+                </div>
+                <div id></div>
+            </aside>
+            <div id="seleccion-asientos">
+                <h2>Selecciona tu(s) asiento(s)</h2>
+                <div id="sala-cine">
+                </div>
+                <div id="leyenda">
+                    <div class="asiento disponible"></div>
+                    <p> Disponible</p>
+                    <div class="asiento reservado"></div>
+                    <p> Tu selección</p>
+                    <div class="asiento ocupado"></div>
+                    <p> Ocupado</p>
+                    <div class="asiento reservado3ro"></div>
+                    <p> Reservado</p>
+                </div>
+            </div>
+        </section>
+        <div id="botones-footer">
+            <button id="atras">Volver</button>
+            <button id="pagar" onclick="">Pagar boletos</button>
+        </div>
+    </main>
+    <div id="modal-help" style="display: none;">
+        <!-- Ubicación del chat -->
+        <div class="bottom-right">
+            <!-- Chat -->
+            <div class="chat">
+                <!-- Información del contacto -->
+                <div class="contact bar">
+                    <div class="pic" id="username-pic"><img src="https://cdn-icons-png.flaticon.com/512/2504/2504240.png" alt="soporte"></div>
+                    <div class="name" id="username">Soporte</div>
+                    <div class="seen" id="last-seen"><small>Hoy a las 1:40 a.&nbsp;m.</small></div>
+                    <button class="close-button" id="cerrar-chat"><span class="close-icon">x</span></button>
+                </div>
+
+                <div class="messages" id="chat">
+
+                    <div style="display:none;">
+                        <div class="time">
+                            Hoy a las 11:41
+                        </div>
+
+                        <div class="message incoming">
+                            Oh, ¿cuál es su problema? 🤔
+                        </div>
+
+                        <div class="message">
+                            Me robaron mi butaca de la función cine 😡
+                        </div>
+                    </div>
+
+                    <!-- Burbujas mientras escribe -->
+                    <div class="message" style="display: none;">
+                        <div class="typing typing-1"></div>
+                        <div class="typing typing-2"></div>
+                        <div class="typing typing-3"></div>
+                    </div>
+                </div>
+
+                <!-- Inputs y Forms -->
+                <form class="input">
+                    <input placeholder="Escribe tu mensaje aquí" type="text">
+                    <i class="fas fa-paper-plane"></i>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

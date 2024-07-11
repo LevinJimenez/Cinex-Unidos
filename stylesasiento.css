@@ -1,0 +1,429 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  font-size: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+h2 {
+  font-size:20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+
+#cines-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cine-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 20px;
+  width: 550px;
+}
+
+.cine-card img {
+  width: 100%;
+  height: auto;
+}
+
+.cine-footer {
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.cine-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.horario-card {
+  background-color: #FF7A7A;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 3px;
+  font-size: 20px;
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horario-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+#datos-pelicula {
+  background-color: #ffffff;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1400px) {
+  #datos-pelicula {
+    flex-direction: column;
+  }
+}
+
+#seleccion-asientos,
+#informacion-pelicula {
+  box-sizing: border-box;
+}
+
+
+#seleccion-asientos {
+  width: 50; /* Ajusta el ancho al 80% del ancho de la ventana del navegador */
+  padding-left: 2vw; /* Usa un porcentaje del ancho de la ventana para el padding */
+  display: flex;
+  flex-direction: column; /* Mantiene la disposición vertical */
+  flex-wrap: nowrap; /* Evita el salto de línea de los elementos hijos */
+  align-items: center; /* Centra los elementos hijos horizontalmente */
+  justify-content: center; /* Centra los elementos hijos verticalmente */
+}
+
+@media (max-width: 799px) {
+  #seleccion-asientos {
+    width: 95vw; /* Aumenta el ancho para pantallas pequeñas */
+    padding-left: 2vw; /* Ajusta el padding para pantallas pequeñas */
+  }
+}
+
+#informacion-pelicula {
+  display: flex;
+  width: 800px;
+  height: 700px;
+  margin: 20px;
+  background-color: #a72828d8;
+  border-radius: 2rem;
+}
+
+@media (max-width: 768px) {
+  #informacion-pelicula {
+    width: 90vw; /* Aumenta el ancho para pantallas pequeñas */
+    height: auto; /* Hace que la altura sea automática para mantener la proporción */
+    flex-direction: column; /* Opcional: Cambia la dirección del flex a columna para mejor visualización en pantallas pequeñas */
+  }
+}
+
+#info-pelicula {
+  margin-left: 10px;
+  margin-top: 50px;
+  padding: 20px;
+  font-size: 25px;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#horarios-contenedor {
+  display: grid;
+  grid-gap: 10px;
+  
+}
+
+@media (max-width: 799px) {
+  #horarios-contenedor {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+}
+@media (min-width: 800px) {
+  #horarios-contenedor {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+@media (min-width: 1000px) {
+  #horarios-contenedor {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+@media (min-width: 1200px) {
+  #horarios-contenedor {
+    grid-template-columns: repeat(4, 1fr);   
+  }
+} 
+.pelicula-contenedor {
+  flex: 0 0 200px;
+  display: flex;
+  margin: 35px;
+  margin-top: 0;
+  flex-direction: column;
+  align-items: center;
+  background-color: #a72828d8;
+  border-radius: 2rem;
+}
+
+.poster-pelicula {
+  width: 100%;
+  height: auto;
+  min-width: 150px;
+  min-height: 225px;
+  border-radius: 2rem 2rem 0 0;
+}
+
+#pagar {
+  margin: 10px auto;
+  margin-top: 0px;
+  display: block;
+  width: 200px;
+  height: 50px;
+  background-color: #a72828d8;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#atras {
+  margin: 20px auto;
+  margin-top: 0px;
+  display: block;
+  width: 120px;
+  padding: 10px;
+  height: 50px;
+  background-color: #a72828d8;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#pagar:hover,
+#atras:hover {
+  opacity: 0.8;
+}
+
+.asiento {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+  flex-grow: 0;
+  flex-basis: 30px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#fila-numeros {
+  display: flex;
+  gap: 5px;
+  align-items: left;
+
+
+}
+
+.numero-asiento {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  flex-grow: 0;
+  flex-basis: 30px;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
+  border: 1px solid;
+  border-color: transparent;
+}
+
+.fila {
+  display: flex;
+
+  gap: 5px;
+}
+
+#sala-cine {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.letra-fila {
+  width: 20px;
+  font-size: 18px;
+  left: 0px;
+  margin-right: 10px;
+}
+
+.asiento-pasillo {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.asiento.disponible {
+  background-color: green;
+
+}
+
+.asiento.disponible:hover {
+  background-color: #c0ffc0;
+}
+
+
+.asiento.ocupado {
+  background-color: red;
+}
+
+.asiento.reservado3ro {
+  background-color: #ff9d00;
+
+}
+
+.asiento.reservado {
+  background-color: #0667b6;
+
+}
+
+.asiento.no-disponible {
+  opacity: 0;
+  background-color: gray;
+}
+
+
+#informacion-asiento {
+  margin-top: 20px;
+}
+
+main#seleccionar-cine {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#cines-contenedor {
+  margin-top: 20px;
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: #a72828d8;
+  color: white;
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  height: 25%;
+  border-radius: 0 0 2rem 2rem;
+}
+
+.header img {
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.header li {
+  margin-right: 50px;/
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}
+
+#help{
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.header a:hover {
+  color: #ddd;
+}
+
+#logo:hover {
+  cursor: pointer;
+}
+
+#home:hover, #help:hover {
+  cursor: pointer;
+}
+
+#leyenda{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#leyenda p{
+  margin-right: 10px;
+}
+
+#botones-footer{
+  display: flex;
+  justify-content: center;
+}
+
+#cerrar-chat{
+  text-align: center;
+  display:flex;
+  right: 1px;
+  top: 1px;
+  cursor: pointer;
+  position: absolute;
+
+  cursor: pointer;
+  background-color:red;
+  color: white;
+}
+.close-button {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ccc; /* Adjust background color as needed */
+  border: none;
+  cursor: pointer;
+  position: relative; /* For positioning the close icon */
+}
+
+.close-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the icon within the button */
+  font-size: 18px; /* Adjust font size as needed */
+  font-weight: bold;
+  color: #fff; /* Adjust text color as needed */
+}
