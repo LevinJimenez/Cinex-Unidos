@@ -1,0 +1,364 @@
+.container {
+  width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+h1 {
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+h3 {
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#cines-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cine-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px;
+  width: 400px;
+}
+
+.cine-card img {
+  width: 100%;
+  height: auto;
+}
+
+.cine-footer {
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.cine-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.horario-card {
+  background-color: #FF7A7A;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 3px;
+  width: 175px;
+  height: 20px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.horario-card:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+
+#datos-pelicula {
+  background-color: #F1F1F1;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  display: flex;
+}
+
+#seleccion-asientos,
+#informacion-pelicula {
+  width: 50%;
+  box-sizing: border-box;
+}
+
+#seleccion-asientos {
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 150px;
+}
+
+#informacion-pelicula {
+  display: flex;
+  background-color: #a72828d8;
+  margin-left: 20px;
+  border-radius: 2rem;
+}
+
+#info-pelicula {
+  margin-left: 10px;
+  margin-top: 80px;
+  padding: 20px;
+  font-size: 2rem;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#imagenPelicula {
+  width: 50%;
+  height: auto;
+  border-radius: 2rem 0 0 2rem;
+
+}
+
+#horarios-contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pelicula-contenedor {
+  flex: 0 0 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #a72828d8;
+  border-radius: 2rem;
+}
+
+.poster-pelicula {
+  width: 100%;
+  height: auto;
+  min-width: 150px;
+  min-height: 225px;
+  border-radius: 2rem 2rem 0 0;
+}
+
+#pagar {
+  margin: 20px auto;
+  margin-top: 100px;
+  display: block;
+  width: 200px;
+  height: 50px;
+  background-color: #FF7A7A;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#atras {
+  margin: 20px auto;
+  margin-top: 20px;
+  display: block;
+  width: 120px;
+  padding: 10px;
+  height: 50px;
+  background-color: #FF7A7A;
+  font-size: 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#pagar:hover,
+#atras:hover {
+  opacity: 0.8;
+}
+
+.asiento {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  cursor: pointer;
+  border-radius: 5px;
+  flex-grow: 0;
+  flex-basis: 30px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+#fila-numeros {
+  display: flex;
+  gap: 5px;
+  align-items: left;
+
+
+}
+
+.numero-asiento {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 5px;
+  flex-grow: 0;
+  flex-basis: 30px;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
+  border: 1px solid;
+  border-color: transparent;
+}
+
+.fila {
+  display: flex;
+
+  gap: 5px;
+}
+
+#sala-cine {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.letra-fila {
+  width: 20px;
+  font-size: 18px;
+  left: 0px;
+  margin-right: 10px;
+}
+
+.asiento-pasillo {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.asiento.disponible {
+  background-color: green;
+
+}
+
+.asiento.disponible:hover {
+  background-color: #c0ffc0;
+}
+
+
+.asiento.ocupado {
+  background-color: red;
+}
+
+.asiento.reservado3ro {
+  background-color: #0667b6;
+
+}
+
+.asiento.reservado {
+  background-color: #ff9d00;
+
+}
+
+.asiento.no-disponible {
+  opacity: 0;
+  background-color: gray;
+}
+
+
+#informacion-asiento {
+  margin-top: 20px;
+}
+
+main#seleccionar-cine {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#cines-contenedor {
+  margin-top: 20px;
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  background-color: #a72828d8;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 0 0 2rem 2rem;
+}
+
+.header img {
+  margin-right: 50px;
+  margin-left: 25px;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.header li {
+  margin-right: 50px;/
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+}
+
+.header a:hover {
+  color: #ddd;
+}
+
+#logo:hover {
+  cursor: pointer;
+}
+
+home:hover {
+  cursor: pointer;
+}
+
+#leyenda{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#leyenda p{
+  margin-right: 10px;
+}
+
+.popup {
+  display: none; /* Oculta el pop-up por defecto */
+  position: fixed; /* Posición fija en la pantalla */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  z-index: 2; /* Asegura que el pop-up se muestre sobre otros elementos */
+}
+
+.popup-content {
+  position: relative;
+  margin: 10% auto; /* Centra el contenido */
+  padding: 20px;
+  background: white;
+  width: 80%;
+  max-width: 600px; /* Máximo ancho del pop-up */
+}
+
+#salirPopup {
+  display: block; /* Hace que el botón ocupe su propia línea */
+  margin: 20px auto; /* Centra el botón horizontalmente */
+}
