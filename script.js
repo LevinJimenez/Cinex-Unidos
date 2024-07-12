@@ -451,6 +451,7 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('contenedor-asientos').style.display = 'none';
     document.getElementById('dulceria-contenedor').style.display = 'none';
     document.getElementById('promociones-contenedor').style.display = 'none';
+    asientosSeleccionados = [];
   });
 
   const home = document.getElementById('home');
@@ -460,6 +461,7 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('contenedor-asientos').style.display = 'none';
     document.getElementById('dulceria-contenedor').style.display = 'none';
     document.getElementById('promociones-contenedor').style.display = 'none';
+    asientosSeleccionados = [];
   });
 
   const atras = document.getElementById('atras');
@@ -469,21 +471,43 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('contenedor-asientos').style.display = 'none';
     document.getElementById('dulceria-contenedor').style.display = 'none';
     document.getElementById('promociones-contenedor').style.display = 'none';
+    asientosSeleccionados = [];
   });
 
   const resumen = document.getElementById('pagar');
   resumen.addEventListener('click', () => {
-  alert('Compra realizada con éxito. Asientos seleccionados: ' + asientosSeleccionados);
-    document.getElementById('seleccionar-cine').style.display = 'block';
+    document.getElementById('seleccionar-cine').style.display = 'none';
+    document.getElementById('contenedor-resumen').style.display = 'block';
     document.getElementById('seleccionar-horario').style.display = 'none';
     document.getElementById('contenedor-asientos').style.display = 'none';
     document.getElementById('dulceria-contenedor').style.display = 'none';
     document.getElementById('promociones-contenedor').style.display = 'none';
+    colocarAsientoResumen(asientosSeleccionados);
+
   });
+  function colocarAsientoResumen(asientosSeleccionados) {
+    const asientosResumen = document.getElementById('asientos-resumen');
+    asientosResumen.innerHTML = ''; 
+    const asientosTexto = asientosSeleccionados.join(', '); 
+    const p = document.createElement('p'); 
+    p.textContent = asientosTexto;
+    asientosResumen.appendChild(p); 
+}
+
+  const menup= document.getElementById('menu-principal');{
+    document.getElementById('seleccionar-cine').style.display = 'block';
+    document.getElementById('contenedor-resumen').style.display = 'none';
+    document.getElementById('seleccionar-horario').style.display = 'none';
+    document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('dulceria-contenedor').style.display = 'none';
+    document.getElementById('promociones-contenedor').style.display = 'none';
+    asientosSeleccionados = [];
+  }
 
   const help = document.getElementById('help');
   help.addEventListener('click', () => {
     document.getElementById('modal-help').style.display = 'block';
+    
   });
   
   const cerrar = document.getElementById('cerrar-chat');
@@ -498,7 +522,7 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('seleccionar-horario').style.display = 'none';
     document.getElementById('contenedor-asientos').style.display = 'none';
     document.getElementById('dulceria-contenedor').style.display = 'none';
-    
+    asientosSeleccionados = [];
   });
   const dulceria = document.getElementById('dulceria-btn');
   dulceria.addEventListener('click', () => {
@@ -507,9 +531,19 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('seleccionar-horario').style.display = 'none';
     document.getElementById('contenedor-asientos').style.display = 'none';
     document.getElementById('promociones-contenedor').style.display = 'none';
-
+    asientosSeleccionados = [];
     mostrarProductos(productos);
   });
+
+  const menu = document.getElementById('menu');
+  menu.addEventListener('click', () => {
+    document.getElementById("mobile-menu").style.width = "100%";
+  });  
+
+  const cerrarMenu = document.getElementById('cerrar-menu');
+  cerrarMenu.addEventListener('click', () => {
+    document.getElementById("mobile-menu").style.width = "0";
+  }); 
 
   const productos = [
     {name: 'COMBO PARA DOS', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001531.jpg', precio: 10, tipo: 'combo' },
@@ -548,7 +582,7 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     const cotufasContenedor = document.getElementById('cotufas');
     productos.forEach(producto => {
       const productoCard = document.createElement('div');
-      productoCard.className = 'pelicula-contenedor';
+      productoCard.className = 'producto-contenedor ';
 
       const productoImagen = document.createElement('img');
       productoImagen.className = 'img-dulceria';
