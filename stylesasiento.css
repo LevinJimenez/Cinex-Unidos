@@ -24,6 +24,10 @@ h3 {
   text-align: center;
 }
 
+main{
+  margin-top: 120px;
+  display: flex;
+}
 
 #cines-contenedor {
   display: flex;
@@ -117,7 +121,7 @@ h3 {
   width: 800px;
   height: 700px;
   margin: 20px;
-  background-color: #a72828d8;
+  background-color: #b84c4c;
   border-radius: 2rem;
 }
 
@@ -131,12 +135,26 @@ h3 {
 
 #info-pelicula {
   margin-left: 10px;
-  margin-top: 50px;
+  margin-top: 130px;
   padding: 20px;
   font-size: 25px;
   color: white;
   flex-direction: column;
   justify-content: center;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  #info-pelicula {
+    margin-left: 10px;
+    margin-top: 0px;
+    padding: 20px;
+    font-size: 25px;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.5;
+  }
 }
 
 #horarios-contenedor {
@@ -171,7 +189,7 @@ h3 {
   margin-top: 0;
   flex-direction: column;
   align-items: center;
-  background-color: #a72828d8;
+  background-color: #b84c4c;
   border-radius: 2rem;
 }
 
@@ -189,7 +207,7 @@ h3 {
   display: block;
   width: 200px;
   height: 50px;
-  background-color: #a72828d8;
+  background-color: #b84c4c;
   font-size: 20px;
   color: white;
   border: none;
@@ -204,7 +222,7 @@ h3 {
   width: 120px;
   padding: 10px;
   height: 50px;
-  background-color: #a72828d8;
+  background-color: #b84c4c;
   font-size: 20px;
   color: white;
   border: none;
@@ -307,7 +325,6 @@ h3 {
 }
 
 main#seleccionar-cine {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -327,13 +344,17 @@ body {
 }
 
 header {
-  background-color: #a72828d8;
+  background-color: #b84c4c;
   color: white;
   padding-top: 5px;
   display: flex;
   align-items: center;
-  height: 25%;
   border-radius: 0 0 2rem 2rem;
+  position: fixed; /* Hace que el header sea fijo */
+  top: 0; /* Alinea el header en la parte superior */
+  left: 0; /* Alinea el header a la izquierda */
+  width: 100%; /* Asegura que el header ocupe el ancho completo */
+  z-index: 1;
 }
 
 
@@ -462,7 +483,7 @@ header {
   margin-top: 0;
   flex-direction: column;
   align-items: center;
-  background-color: #a72828d8;
+  background-color: #b84c4c;
   border-radius: 2rem;
 }
 .dulceria-layout {
@@ -519,7 +540,7 @@ header {
   width: 206px;
   height: 250px;
   border-radius: 2rem 2rem 0 0; 
-  border-color: 1px solid #a72828d8;
+  border-color: 1px solid #b84c4c;
 }
 
 /* ------------------------------------------------------------------------------- PROMOCIONES -------------------------------------------------------------------------------------------------------------------------------------------------------*/
@@ -550,7 +571,7 @@ header {
 .img-promocion{
   width: 100%;
   border-radius: 2rem 2rem 0 0; 
-  border-color: 1px solid #a72828d8;
+  border-color: 1px solid #b84c4c;
 }
 /* ------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -572,18 +593,26 @@ header {
 
 /* ------------------------------------------------------------------------------- navbar -------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+#menu{
+  background-color: #a7282800;
+  border-color: #0667b600;
+  color: #ffffff; 
+  scale: 2;
+  cursor: pointer;
+}
+
+
 #menu, #mobile-menu {
   display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 999px) {
   #navbar-options{
     display: none;
   }
   header {
     display: flex;
-    height: 100%;
-    padding: 5px;
+    padding: 7px;
     padding-left: 0 ;
     border-radius: 0 0 0 0;
   }
@@ -595,9 +624,6 @@ header {
 }
 
 @media (min-width: 1000px) {
-  #navbar-options{
-    display: flex;
-  }
   #menu, #mobile-menu {
     display: none;
   }
@@ -643,6 +669,7 @@ header {
   top: 20px;
   right: 45px;
   font-size: 65px;
+  cursor: pointer;
 }
 
 @media screen and (max-height:450px) {
