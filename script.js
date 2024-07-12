@@ -537,12 +537,12 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
 
   const menu = document.getElementById('menu');
   menu.addEventListener('click', () => {
-    document.getElementById("mobile-menu").style.width = "100%";
+    document.getElementById("mobile-menu").style.display = "block";
   });  
 
   const cerrarMenu = document.getElementById('cerrar-menu');
   cerrarMenu.addEventListener('click', () => {
-    document.getElementById("mobile-menu").style.width = "0";
+    document.getElementById("mobile-menu").style.display = "none";
   }); 
 
   const productos = [
