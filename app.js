@@ -59,8 +59,9 @@ if (!username) {
     throw new Error('Username is required!');
 }
 
-const socket = io({
+const socket = io("https://cinexunidos-production.up.railway.app/", {
     auth: {
+        origin:
         token: 'ABC-456', // Se debería sustituir por un token real...
         name: username,
     },

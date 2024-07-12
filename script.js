@@ -159,7 +159,7 @@ function mostrarCines(cines) {
 
     cines.forEach(cine => {
         const cineCard = document.createElement('div');
-        cineCard.className = 'cine-card';
+        cineCard.className = 'cine-card grow opacity-increase';
         const cineImagen = document.createElement('img');
         cineImagen.src =baseUrl+cine.images[0]; 
         cineImagen.alt = `Imagen de ${cine.name}`;
@@ -224,7 +224,7 @@ Object.values(peliculas).forEach(pelicula => {
     pelicula.horarios.forEach(horario => {
         const horarioCard = document.createElement('div');
         
-        horarioCard.className = 'horario-card';
+        horarioCard.className = 'horario-card opacity-increase grow';
         horarioCard.textContent = `${horario.sala} - ${horario.startTime}`;
         horarioCard.addEventListener('click', () => {
            
@@ -330,18 +330,28 @@ addEventListener('DOMContentLoaded', () => {
     switch (estadoAsiento) {
       case -1:
         asientoHTML.classList.add('no-disponible');
+        asientoHTML.onclick = () => {
+          showTemporaryAlert('Este asiento no está disponible');     
+        };
         break;
       case 0:
         asientoHTML.classList.add('disponible');
         asientoHTML.onclick = () => {
-          reservarAsiento(parametrosSala,`${fila}${numeroAsiento}`);      
+          reservarAsiento(parametrosSala,`${fila}${numeroAsiento}`);
+          showTemporaryAlert('Asiento reservado');    
         };
         break;
       case 1:
         asientoHTML.classList.add('ocupado');
+        asientoHTML.onclick = () => {
+          showTemporaryAlert('Este asiento ya está ocupado');     
+        };
         break;
       case 2:
         asientoHTML.classList.add('reservado3ro');
+        asientoHTML.onclick = () => {
+         showTemporaryAlert('Este asiento ya está reservado por otra persona');
+        }
         
         break;
       default:
@@ -350,6 +360,21 @@ addEventListener('DOMContentLoaded', () => {
     }
   
     return asientoHTML;
+  }
+  function showTemporaryAlert(message) {
+    
+    const existingNotification = document.querySelector('.temporary-alert');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    const notification = document.createElement('div');
+    notification.classList.add('temporary-alert'); 
+    notification.textContent = message;
+  
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.remove();
+    }, 2000);
   }
   
 function recargarAsientos(idAsiento,accion,parametrosSala) {
@@ -424,13 +449,17 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('seleccionar-cine').style.display = 'block';
     document.getElementById('seleccionar-horario').style.display = 'none';
     document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('dulceria-contenedor').style.display = 'none';
+    document.getElementById('promociones-contenedor').style.display = 'none';
   });
 
   const home = document.getElementById('home');
   home.addEventListener('click', () => {
-    document.getElementById('seleccionar-cine').style.display = 'block';
+    document.getElementById('seleccionar-cine').style.display = 'flex';
     document.getElementById('seleccionar-horario').style.display = 'none';
     document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('dulceria-contenedor').style.display = 'none';
+    document.getElementById('promociones-contenedor').style.display = 'none';
   });
 
   const atras = document.getElementById('atras');
@@ -438,6 +467,8 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('seleccionar-cine').style.display = 'none';
     document.getElementById('seleccionar-horario').style.display = 'block';
     document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('dulceria-contenedor').style.display = 'none';
+    document.getElementById('promociones-contenedor').style.display = 'none';
   });
 
   const resumen = document.getElementById('pagar');
@@ -446,6 +477,8 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('seleccionar-cine').style.display = 'block';
     document.getElementById('seleccionar-horario').style.display = 'none';
     document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('dulceria-contenedor').style.display = 'none';
+    document.getElementById('promociones-contenedor').style.display = 'none';
   });
 
   const help = document.getElementById('help');
@@ -458,5 +491,96 @@ function recargarAsientos(idAsiento,accion,parametrosSala) {
     document.getElementById('modal-help').style.display = 'none';
   });
 
+  const promocion = document.getElementById('promocion-btn');
+  promocion.addEventListener('click', () => {
+    document.getElementById('promociones-contenedor').style.display = 'block';
+    document.getElementById('seleccionar-cine').style.display = 'none';
+    document.getElementById('seleccionar-horario').style.display = 'none';
+    document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('dulceria-contenedor').style.display = 'none';
+    
+  });
+  const dulceria = document.getElementById('dulceria-btn');
+  dulceria.addEventListener('click', () => {
+    document.getElementById('dulceria-contenedor').style.display = 'block';
+    document.getElementById('seleccionar-cine').style.display = 'none';
+    document.getElementById('seleccionar-horario').style.display = 'none';
+    document.getElementById('contenedor-asientos').style.display = 'none';
+    document.getElementById('promociones-contenedor').style.display = 'none';
 
-  
+    mostrarProductos(productos);
+  });
+
+  const productos = [
+    {name: 'COMBO PARA DOS', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001531.jpg', precio: 10, tipo: 'combo' },
+    {name: 'MEGA COMBO', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001532.jpg', precio: 14, tipo: 'combo' },
+    {name: 'COMBO HOT DOG', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001357.jpg', precio: 6, tipo: 'combo' },
+    {name: 'COMBO NUGGETS', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001317.jpg', precio: 6, tipo: 'combo' },
+    {name: 'COMBO TEQUEÑOS 6 UN', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001313.jpg', precio: 7, tipo: 'combo' },
+    {name: 'COTUFA X-GRANDE', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001533.jpg', precio: 5, tipo: 'cotufas' },
+    {name: 'MINALBA PET 600ML', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000037.jpg', precio: 1.8, tipo: 'bebida' },
+    {name: 'BEBIDA GRANDE', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001307.jpg', precio: 3, tipo: 'bebida' },
+    {name: 'BEBIDA MEDIANA', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001308.jpg', precio: 2, tipo: 'bebida' },
+    {name: 'COCOSETTE MAXI', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000013.jpg', precio: 1.2, tipo: 'dulce' },
+    {name: 'CRI CRI 27GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000771.jpg', precio: 1.4, tipo: 'dulce' },
+    {name: 'SAMBA 32GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000772.jpg', precio: 0.9, tipo: 'dulce' },
+    {name: 'GOMITAS SABROSITAS FAMILIAR 90 GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000026.jpg', precio: 1.3, tipo: 'dulce' },
+    {name: 'DORITOS MEGA QUESO 150 GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000016.jpg', precio: 3.4, tipo: 'snack' },
+    {name: 'CHEESE TRIS 150 GRS', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001573.jpg', precio: 2.2, tipo: 'snack' },
+    {name: 'NATUCHIPS PLATANITOS NAT 150 GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000041.jpg', precio: 4, tipo: 'snack' },
+    {name: 'RUFFLES QUESO 125 GRS', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001385.jpg', precio: 3.9, tipo: 'snack' },
+    {name: 'PEPITO 80GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10001574.jpg', precio: 1.5, tipo: 'snack' },
+    {name: 'FLAQUITO DISPLAY 30GR', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000892.jpg', precio: 0.6, tipo: 'dulce' },
+    {name: 'SUSY CHOCOLATE MAXI', img: 'https://cdnecinesunidosweb.azureedge.net/concessions/10000056.jpg', precio: 1.2, tipo: 'dulce' },
+  ]
+
+  let dulceriaMostrada = false;
+
+  function mostrarProductos(productos) {
+    if (dulceriaMostrada) {
+      return;
+    }
+
+    const comboContenedor = document.getElementById('combos');
+    const bebidaContenedor = document.getElementById('bebidas');
+    const dulceContenedor = document.getElementById('dulces');
+    const snackContenedor = document.getElementById('snacks');
+    const cotufasContenedor = document.getElementById('cotufas');
+    productos.forEach(producto => {
+      const productoCard = document.createElement('div');
+      productoCard.className = 'pelicula-contenedor';
+
+      const productoImagen = document.createElement('img');
+      productoImagen.className = 'img-dulceria';
+      productoImagen.src = producto.img;
+      productoImagen.alt = `Imagen de ${producto.name}`;
+      productoCard.appendChild(productoImagen);
+
+      const productoFooter = document.createElement('div');
+      productoFooter.className = 'producto-footer';
+
+      const productoNombre = document.createElement('p');
+      productoNombre.className = 'info-dulceria';
+      productoNombre.textContent = producto.name;
+      productoFooter.appendChild(productoNombre);
+
+      const productoPrecio = document.createElement('p');
+      productoPrecio.className = 'info-dulceria';
+      productoPrecio.textContent = `${producto.precio} $`;
+      productoFooter.appendChild(productoPrecio);
+      productoCard.appendChild(productoFooter);
+
+      if (producto.tipo === 'combo') {
+        comboContenedor.appendChild(productoCard);
+      } else if (producto.tipo === 'bebida') {
+        bebidaContenedor.appendChild(productoCard);
+      } else if (producto.tipo === 'dulce') {
+        dulceContenedor.appendChild(productoCard);
+        dulceriaMostrada = true;
+      } else if (producto.tipo === 'snack') {
+        snackContenedor.appendChild(productoCard);
+      } else if (producto.tipo === 'cotufas') {
+        cotufasContenedor.appendChild(productoCard);
+      }
+    });
+  }
