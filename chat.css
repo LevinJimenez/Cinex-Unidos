@@ -11,6 +11,11 @@ html {
     color: #333;
     background: #f7f7f7;
 }
+.textoT{
+    color: #333;
+
+
+}
 
 .information-bubble {
     margin-left: 20px;
@@ -23,11 +28,12 @@ html {
     color: red;
 }
 
-.form input {
+.form input{
     padding: 10px;
     width: 250px;
     border-radius: 15px;
-}
+    
+  }
 
 .center {
     display: flex;
@@ -77,7 +83,7 @@ html {
 }
 
 .chat {
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

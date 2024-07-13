@@ -37,12 +37,12 @@
         
         <div >
             <div class="information-bubble">
-                <h3>Estado del chat:
+                <h3 class="textoT">Estado del chat:
                   <small class="" id="status-online">online</small>
                   <small class="hidden" id="status-offline">offline</small>
                 </h3>
             
-                <h3>Personas conectadas</h3>
+                <h3 class="textoT">Personas conectadas:</h3>
                 <ul id="users-list"></ul>
             
                 <button id="disconnectBtn-btn" onclick="sendMessage()">Cerrar sesión</button>
@@ -82,7 +82,7 @@
       
           </div>
           <form class="input">
-            <input placeholder="Escribe tu mensaje aquí" type="text">
+            <input id="inputTxt" placeholder="Escribe tu mensaje aquí" type="text">
             <i class="fas fa-paper-plane"></i>
           </form>
     </main>

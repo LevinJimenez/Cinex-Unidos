@@ -523,7 +523,10 @@ resumen.addEventListener('click', () => {
   // document.getElementById('promociones-contenedor').style.display = 'none';
   // colocarAsientoResumen(asientosSeleccionados);
 });
-
+const abrirChat= document.getElementById('help');
+abrirChat.addEventListener('click', () => {
+  soporteModal.style.display = 'block';
+});
 
 function colocarAsientoResumen(asientosSeleccionados) {
   const asientosResumen = document.getElementById('asientos-resumen');
