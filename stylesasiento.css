@@ -380,6 +380,10 @@ header {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
 }
+#modal-help{
+  z-index:10;
+
+}
 
 #help{
   margin-left: auto;
