@@ -682,3 +682,10 @@ header {
       right: 35px;
   }
 }
+
+#resumen-compra{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}

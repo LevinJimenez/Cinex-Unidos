@@ -331,7 +331,7 @@ function crearAsiento(fila, numeroAsiento, estadoAsiento, parametrosSala) {
     case -1:
       asientoHTML.classList.add('no-disponible');
       asientoHTML.onclick = () => {
-        showTemporaryAlert('Este asiento no está disponible');
+        showTemporaryAlert('Este asiento no está disponible',2000);
       };
       break;
     case 0:
@@ -344,13 +344,13 @@ function crearAsiento(fila, numeroAsiento, estadoAsiento, parametrosSala) {
     case 1:
       asientoHTML.classList.add('ocupado');
       asientoHTML.onclick = () => {
-        showTemporaryAlert('Este asiento ya está ocupado');
+        showTemporaryAlert('Este asiento ya está ocupado',2000);
       };
       break;
     case 2:
       asientoHTML.classList.add('reservado3ro');
       asientoHTML.onclick = () => {
-        showTemporaryAlert('Este asiento ya está reservado por otra persona');
+        showTemporaryAlert('Este asiento ya está reservado por otra persona',2000);
       }
 
       break;
@@ -361,7 +361,7 @@ function crearAsiento(fila, numeroAsiento, estadoAsiento, parametrosSala) {
 
   return asientoHTML;
 }
-function showTemporaryAlert(message) {
+function showTemporaryAlert(message,ms) {
 
   const existingNotification = document.querySelector('.temporary-alert');
   if (existingNotification) {
@@ -374,7 +374,7 @@ function showTemporaryAlert(message) {
   document.body.appendChild(notification);
   setTimeout(() => {
     notification.remove();
-  }, 2000);
+  }, ms);
 }
 
 function recargarAsientos(idAsiento, accion, parametrosSala) {
@@ -484,7 +484,7 @@ function dulceria() {
   mostrarProductos(productos);
 };
 
-function dulceria() {
+/*function dulceria() {
   seleccionarCine.style.display = 'none';
   seleccionarHorario.style.display = 'none';
   contenedorAsientos.style.display = 'none';
@@ -492,7 +492,7 @@ function dulceria() {
   promocionesContenedor.style.display = 'none';
   mobileMenu.style.display = 'none';
   mostrarProductos(productos);
-};
+};*/
 
 function soporte(){
   soporteModal.style.display = 'block';
@@ -510,13 +510,18 @@ atras.addEventListener('click', () => {
 
 const resumen = document.getElementById('pagar');
 resumen.addEventListener('click', () => {
-  document.getElementById('seleccionar-cine').style.display = 'none';
-  document.getElementById('contenedor-resumen').style.display = 'block';
-  document.getElementById('seleccionar-horario').style.display = 'none';
-  document.getElementById('contenedor-asientos').style.display = 'none';
-  document.getElementById('dulceria-contenedor').style.display = 'none';
-  document.getElementById('promociones-contenedor').style.display = 'none';
-  colocarAsientoResumen(asientosSeleccionados);
+  if(asientosSeleccionados.length === 0){
+    showTemporaryAlert('Debes seleccionar al menos un asiento',3000);
+    return;
+  }
+  showTemporaryAlert('ERROR al relaizar la compra,porfavor contactese con alguno de nuestros asesores en la sección de Soporte',5000);
+  // document.getElementById('seleccionar-cine').style.display = 'none';
+  // document.getElementById('contenedor-resumen').style.display = 'block';
+  // document.getElementById('seleccionar-horario').style.display = 'none';
+  // document.getElementById('contenedor-asientos').style.display = 'none';
+  // document.getElementById('dulceria-contenedor').style.display = 'none';
+  // document.getElementById('promociones-contenedor').style.display = 'none';
+  // colocarAsientoResumen(asientosSeleccionados);
 });
 
 
