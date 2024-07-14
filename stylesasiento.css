@@ -693,3 +693,47 @@ header {
   align-items: center;
   margin-top: 20px;
 }
+.modal {
+  display: none;/* Oculto por defecto */
+  position: fixed; /* Fijo en la pantalla */
+  z-index: 10; /* Por encima de otros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Alto completo */
+  overflow: auto; /* Habilita el scroll si es necesario */
+  background-color: rgb(0,0,0); /* Color de fondo */
+  background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* Centrado vertical y horizontal */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Ancho del contenido */
+  
+  
+}
+#nameForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#nameInput, #nameForm button {
+  margin: 10px 0;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

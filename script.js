@@ -452,6 +452,7 @@ var contenedorResumen = document.getElementById('contenedor-resumen');
 var dulceriaContenedor = document.getElementById('dulceria-contenedor');
 var promocionesContenedor = document.getElementById('promociones-contenedor');
 var soporteModal = document.getElementById('modal-help');
+var modalNombre= document.getElementById('modalNombre');
 
 function home() {
   seleccionarCine.style.display = 'flex';
@@ -495,7 +496,15 @@ function dulceria() {
 };*/
 
 function soporte(){
+  modalNombre.style.display='block';
+  //soporteModal.style.display = 'block';
+}
+function soporteChat(){
+  modalNombre.style.display='none';
   soporteModal.style.display = 'block';
+}
+function cerrarModal(){
+  modalNombre.style.display='none';
 }
 
 const atras = document.getElementById('atras');

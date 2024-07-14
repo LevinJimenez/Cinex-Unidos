@@ -94,7 +94,17 @@
             <button class="opacity-increase" id="pagar" onclick="">Pagar boletos</button>
         </div>
     </main>
-
+    <div id="modalNombre" class="modal" style="display:none">
+        <div class="modal-content">
+          <span class="close" onclick="cerrarModal()">&times;</span>
+          <h2>Introduce tu nombre</h2>
+          
+            <label for="nameInput">Nombre:</label>
+            <input type="text" id="nameInput" required>
+            <button type="onclick" onclick="iniciarConex()">Enviar</button>
+          
+        </div>
+      </div>
 
     <div id="modal-help" style="display: none;">
         <!-- Ubicación del chat -->
@@ -109,9 +119,7 @@
                     <div class="seen" id="last-seen"><small>Hoy a las 1:40 a.&nbsp;m.</small></div>
                     <button class="close-button" id="cerrar-chat"><span class="close-icon">x</span></button>
                 </div>
-
                 <div class="messages" id="chat">
-
                     <div style="display:none;">
                         <div class="time">
                             Hoy a las 11:41
@@ -136,7 +144,7 @@
 
                 <!-- Inputs y Forms -->
                 <form class="input">
-                    <input placeholder="Escribe tu mensaje aquí" type="text">
+                    <input id="env" placeholder="Escribe tu mensaje aquí" type="text">
                     <i class="fas fa-paper-plane"></i>
                 </form>
 

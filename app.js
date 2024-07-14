@@ -6,7 +6,7 @@ const $offlineStatus = document.querySelector('#status-offline');
 const $usersList = document.querySelector('#users-list');
 const $chatForm = document.querySelector('form');
 const $messageInput = document.querySelector('input');
-const $chatElement = document.querySelector('#chat');
+var chatElement = "";
 const $username = document.querySelector('#username');
 const $lastSeen = document.querySelector('#last-seen');
 const $usernamePic = document.querySelector('#username-pic');
@@ -16,17 +16,18 @@ const input = document.getElementById('input');
 
   const renderMessage = (payload) => {
     const { id, message, name } = payload;
-    if (name.includes('30370861')||id == socket.id){
+    if (name.includes('30370861')&&id !== socket.id){
   
     const divElement = document.createElement('div');
     divElement.classList.add('message');
   
-    if (id !== socket.id) {
+    if (id == socket.id) {
       divElement.classList.add('incoming');
     }
   
     divElement.innerHTML = `<small>${name}</small><p>${message}</p>`;    
-    chatElement.appendChild(divElement);
+    document.getElementById('chat'+name).appendChild(divElement);
+   
   
     // Scroll al final de los mensajes...
     chat.scrollTop = chat.scrollHeight;
@@ -124,22 +125,26 @@ function mostrarChat(idChat){
   document.getElementById(chat).style.display = 'none';
   });
   document.getElementById(idChat).style.display = 'block';
-  chatElement = document.getElementById('chat'+idChat)
+  chatElement = document.getElementById('chat'+idChat);
+  console.log(chatElement);
    
   };
 
   
   $chatForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
-  
-      const message = $messageInput.value;
-      $messageInput.value = '';
+      const divElement = document.createElement('div');
+      divElement.classList.add('message'); 
+      divElement.classList.add('incoming');
+      divElement.innerHTML = `<p>${$messageInput.value}</p>`;    
+      chatElement.appendChild(divElement);
+      const message = $messageInput.value + chatElement.id;
+      $messageInput.value = '';   
+        
   
       socket.emit('send-message', message);
   });
  
-
-
 
   function crearDivCopia(id) {
       const originalDiv = document.getElementById('chatOriginal');
@@ -148,13 +153,12 @@ function mostrarChat(idChat){
   
       // Append the cloned div to the body before accessing its children
       document.body.appendChild(copiaDiv);
-  
+      username
       // Access the child div within the cloned div
       const hijoDiv = copiaDiv.querySelector('#chat');
       hijoDiv.id = 'chat' + id;    
+      const hijonombreUsuario = copiaDiv.querySelector('#username');
+      hijonombreUsuario.id = 'chat' + id; 
   }
 
-      
-      
-
-    
+  
