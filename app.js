@@ -116,9 +116,6 @@ socket.on('online-users', renderUsers);
 socket.on('new-message', renderMessage);
 
 
-
-
-
 function mostrarChat(idChat){
   console.log(arrayChats);
   arrayChats.forEach((chat) => {
