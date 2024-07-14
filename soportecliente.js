@@ -12,6 +12,11 @@ const $usernamePic = document.querySelector('#username-pic');
 const $disconnectBtn = document.querySelector('#disconnect-btn');
 var soporteModal = document.getElementById('modal-help');
 var modalNombre= document.getElementById('modalNombre');
+var botonCerrar=document.getElementById('cerrar-chat');
+
+botonCerrar.addEventListener('click',function(){
+  socket.close();
+});
 
 function soporteChat(){
   modalNombre.style.display='none';
@@ -96,7 +101,7 @@ socket.on('connect', () => {
 
     $lastSeen.innerHTML = getLastSeen();
 
-    $usernamePic.innerHTML = `<img src="https://api.dicebear.com/9.x/initials/svg?seed=${username}" alt="${username}" />`;
+    
     console.log('Connected');
 });
 

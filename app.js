@@ -101,7 +101,7 @@ socket.on('connect', () => {
  
   $lastSeen.innerHTML = getLastSeen();
 
-  $usernamePic.innerHTML = `<img src="https://api.dicebear.com/9.x/initials/svg?seed=${username}" alt="${username}" />`;
+  
   console.log('Connected');
 });
 
@@ -154,11 +154,17 @@ function mostrarChat(idChat){
       // Access the child div within the cloned div
       const hijoDiv = copiaDiv.querySelector('#chat');
       hijoDiv.id = 'chat' + id;    
-      const hijonombreUsuario = copiaDiv.querySelector('#username');
-      
+      const hijonombreUsuario = copiaDiv.querySelector('#username');     
       const idNombre=id.replace("30370861_",'');
-      
       hijonombreUsuario.textContent =  idNombre; 
+
+      const hijoImg = copiaDiv.querySelector("#username-pic1");
+        
+      console.log(hijoImg);    
+
+      hijoImg.src = 'https://api.dicebear.com/9.x/initials/svg?seed='+idNombre;
+      console.log(hijoImg.src);
+      
   }
 
   
