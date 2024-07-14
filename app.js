@@ -158,7 +158,10 @@ function mostrarChat(idChat){
       const hijoDiv = copiaDiv.querySelector('#chat');
       hijoDiv.id = 'chat' + id;    
       const hijonombreUsuario = copiaDiv.querySelector('#username');
-      hijonombreUsuario.id = 'chat' + id; 
+      
+      const idNombre=id.replace("30370861_",'');
+      
+      hijonombreUsuario.textContent =  idNombre; 
   }
 
   
