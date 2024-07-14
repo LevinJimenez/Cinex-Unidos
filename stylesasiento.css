@@ -343,7 +343,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
+.header {
   background-color: #b84c4c;
   color: white;
   padding-top: 5px;
@@ -699,6 +699,7 @@ header {
   z-index: 10; /* Por encima de otros elementos */
   left: 0;
   top: 0;
+  
   width: 100%; /* Ancho completo */
   height: 100%; /* Alto completo */
   overflow: auto; /* Habilita el scroll si es necesario */
@@ -707,25 +708,47 @@ header {
 }
 
 .modal-content {
+  border-radius: 10px;
   background-color: #fefefe;
   margin: 15% auto; /* Centrado vertical y horizontal */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Ancho del contenido */
-  
+  width: 40%; /* Ancho del contenido */ 
+}
+
+#enviar {
+  margin-left:5px;
+  margin-top: 0px;
+  display: block;
+  width: 100px;
+  height: 30px;
+  background-color: #b84c4c;
+  font-size: 25px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+} 
+
+#input{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
 }
+
 #nameForm {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#nameInput, #nameForm button {
+#nameInput, #nameForm button, #label-input {
   margin: 10px 0;
+  font-size: 20px;
 }
 
 .close {
-  color: #aaa;
+  color: black;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -733,7 +756,7 @@ header {
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: red;
   text-decoration: none;
   cursor: pointer;
 }

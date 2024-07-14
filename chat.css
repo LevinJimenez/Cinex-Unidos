@@ -11,7 +11,8 @@ html {
     color: #333;
     background: #f7f7f7;
 }
-.textoT{
+
+.textoT {
     color: #333;
 
 
@@ -24,16 +25,33 @@ html {
 #status-online {
     color: green;
 }
+
 #status-offline {
     color: red;
 }
 
-.form input{
+.form input {
     padding: 10px;
     width: 250px;
     border-radius: 15px;
-    
-  }
+
+}
+
+#form-input-soporte{
+    position: relative;
+    left:200px;
+    padding: 10px;
+    width: 24rem;
+    border-radius: 15px;
+    align-self: flex-end;
+    justify-content: center;
+}
+
+#input-soporte{
+    margin: 10px 0;
+    font-size: 20px;
+    width: 24rem;
+}
 
 .center {
     display: flex;
@@ -67,10 +85,12 @@ html {
     flex-direction: column;
     justify-content: center;
 }
+
 .contact .pic {
     position: absolute;
     left: 0;
 }
+
 .contact .name {
     font-weight: 500;
     margin-bottom: 0.125rem;
@@ -87,6 +107,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    left: 500px;
     width: 24rem;
     height: 38rem;
     z-index: 2;
@@ -97,6 +118,24 @@ html {
         0 0 8rem 0 rgba(0, 0, 0, 0.1),
         0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
 }
+
+#chat-cliente{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 0px;
+    width: 24rem;
+    height: 38rem;
+    z-index: 2;
+    box-sizing: border-box;
+    border-radius: 1rem;
+    background: white;
+    box-shadow:
+        0 0 8rem 0 rgba(0, 0, 0, 0.1),
+        0rem 2rem 4rem -3rem rgba(0, 0, 0, 0.5);
+}
+
 
 .chat .contact.bar {
     flex-basis: 3.5rem;
@@ -115,6 +154,7 @@ html {
         inset 0 2rem 2rem -2rem rgba(0, 0, 0, 0.05),
         inset 0 -2rem 2rem -2rem rgba(0, 0, 0, 0.05);
 }
+
 .chat .messages .time {
     font-size: 0.8rem;
     background: #eee;
@@ -126,6 +166,7 @@ html {
     width: fit-content;
     margin: 0 auto;
 }
+
 .chat .messages .message {
     box-sizing: border-box;
     padding: 0.5rem 1rem;
@@ -163,14 +204,17 @@ html {
     -webkit-animation: typing 3s infinite;
     animation: typing 3s infinite;
 }
+
 .chat .messages .message .typing.typing-2 {
     -webkit-animation: typing 3s 250ms infinite;
     animation: typing 3s 250ms infinite;
 }
+
 .chat .messages .message .typing.typing-3 {
     -webkit-animation: typing 3s 500ms infinite;
     animation: typing 3s 500ms infinite;
 }
+
 .chat .input {
     box-sizing: border-box;
     flex-basis: 4rem;
@@ -179,6 +223,7 @@ html {
     align-items: center;
     padding: 0 0.5rem 0 1.5rem;
 }
+
 .chat .input i {
     font-size: 1.5rem;
     margin-right: 1rem;
@@ -186,9 +231,11 @@ html {
     cursor: pointer;
     transition: color 200ms;
 }
+
 .chat .input i:hover {
     color: #333;
 }
+
 .chat .input input {
     border: none;
     background-image: none;
@@ -206,17 +253,20 @@ html {
     font-weight: 400;
     letter-spacing: 0.025em;
 }
+
 .chat .input input:placeholder {
     color: #999;
 }
 
 @-webkit-keyframes typing {
+
     0%,
     75%,
     100% {
         transform: translate(0, 0.25rem) scale(0.9);
         opacity: 0.5;
     }
+
     25% {
         transform: translate(0, -0.25rem) scale(1);
         opacity: 1;
@@ -224,22 +274,65 @@ html {
 }
 
 @keyframes typing {
+
     0%,
     75%,
     100% {
         transform: translate(0, 0.25rem) scale(0.9);
         opacity: 0.5;
     }
+
     25% {
         transform: translate(0, -0.25rem) scale(1);
         opacity: 1;
     }
 }
+
 .pic {
     border-radius: 50%;
     overflow: hidden;
 }
 
 .hidden {
-  display: none;
+    display: none;
+}
+
+#header-soporte {
+    justify-content: center;
+    align-items: center;
+    background-color: #b84c4c;
+    color: white;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 0 0 2rem 2rem;
+    position: fixed;
+    /* Hace que el header sea fijo */
+    top: 0;
+    /* Alinea el header en la parte superior */
+    left: 0;
+    /* Alinea el header a la izquierda */
+    width: 100%;
+    /* Asegura que el header ocupe el ancho completo */
+    z-index: 1;
+}
+
+#cliente-online {
+    cursor: pointer;
+    list-style-type: none;
+}
+
+#disconnectBtn-btn {
+    margin-left: 5px;
+    margin-top: 0px;
+    display: block;
+    width: 200px;
+    height: 30px;
+    background-color: #b84c4c;
+    font-size: 25px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
 }

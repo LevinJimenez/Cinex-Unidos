@@ -6,7 +6,9 @@
     <title>Cinex Unidos</title>
     <link rel="stylesheet" href="stylesasiento.css" />
     <link rel="stylesheet" href="chat.css" />
-    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+        integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,28 +21,30 @@
             <li><a id="home" onclick="home()">CINES EN TU CIUDAD</a></li>
             <li><a id="dulceria-btn" onclick="dulceria()">DULCERÍA</a></li>
             <li><a id="promocion-btn" onclick="promocion()">PROMOCIONES</a></li>
-            <li><a id="help" onclick="soporte()">SOPORTE<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+            <li><a id="help" onclick="soporte()">SOPORTE<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
                         <path
                             d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
                     </svg></a></li>
         </ul>
-            <button id="menu" class="navbar__toggle-btn grow" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+        <button id="menu" class="navbar__toggle-btn grow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
             </svg></button>
-            <div id="mobile-menu" class="overlay">
-                <a id="cerrar-menu" class="close" onclick="closeMenu()">&times;</a>
-                <ul class="overlay-content">
-                    <li><a id="home" onclick="home()">CINES EN TU CIUDAD</a></li>
-                    <li><a id="dulceria-btn" onclick="dulceria()">DULCERÍA</a></li>
-                    <li><a id="promocion-btn" onclick="promocion()">PROMOCIONES</a></li>
-                    <li><a id="help" onclick="soporte()">SOPORTE<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                    fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
-                    <path
-                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
-                    </svg></a></li>
-                </ul>
-            </div>
+        <div id="mobile-menu" class="overlay">
+            <a id="cerrar-menu" class="close" onclick="closeMenu()">&times;</a>
+            <ul class="overlay-content">
+                <li><a id="home" onclick="home()">CINES EN TU CIUDAD</a></li>
+                <li><a id="dulceria-btn" onclick="dulceria()">DULCERÍA</a></li>
+                <li><a id="promocion-btn" onclick="promocion()">PROMOCIONES</a></li>
+                <li><a id="help" onclick="soporte()">SOPORTE<svg xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                        </svg></a></li>
+            </ul>
+        </div>
     </header>
 
 
@@ -96,21 +100,21 @@
     </main>
     <div id="modalNombre" class="modal" style="display:none">
         <div class="modal-content">
-          <span class="close" onclick="cerrarModal()">&times;</span>
-          <h2>Introduce tu nombre</h2>
-          
-            <label for="nameInput">Nombre:</label>
-            <input type="text" id="nameInput" required>
-            <button type="onclick" onclick="iniciarConex()">Enviar</button>
-          
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>Introduce tu nombre</h2>
+            <div id="input">
+                <label id="label-input" for="nameInput">Nombre:</label>
+                <input type="text" id="nameInput" required>
+                <button id="enviar" type="onclick" class="opacity-increase" onclick="iniciarConex()">Enviar</button>
+            </div>
         </div>
-      </div>
+    </div>
 
     <div id="modal-help" style="display: none;">
         <!-- Ubicación del chat -->
         <div class="bottom-right">
             <!-- Chat -->
-            <div class="chat">
+            <div id="chat-cliente" class="chat">
                 <!-- Información del contacto -->
                 <div class="contact bar">
                     <div class="pic" id="username-pic"><img id="username-pic1"
@@ -122,18 +126,12 @@
                 <div class="messages" id="chat">
                     <div style="display:none;">
                         <div class="time">
-                            Hoy a las 11:41
                         </div>
-
                         <div class="message incoming">
-                            Oh, ¿cuál es su problema? 🤔
                         </div>
-
-                        <div class="message">
-                            Me robaron mi butaca de la función cine 😡
+                        <div class="message"> 
                         </div>
                     </div>
-
                     <!-- Burbujas mientras escribe -->
                     <div class="message" style="display: none;">
                         <div class="typing typing-1"></div>
@@ -198,7 +196,7 @@
             </div>
         </div>
     </main>
-    
+
     <script src="script.js"></script>
     <script src="soportecliente.js"></script>
 </body>

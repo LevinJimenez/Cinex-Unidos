@@ -55,8 +55,12 @@ var socket=io("https://cinexunidos-production.up.railway.app/",{auth: {
   name: '30370861_Soporte',
 },});
 
+const salir = document.getElementById('disconnectBtn-btn');
 
-
+salir.addEventListener('click', (evt) => {
+  socket.close();
+  window.location.href = 'Equipo11-Jimenez,Monasterio,Mondim.html';
+});
 
 const renderUsers = (users) => {
   const usersList = document.getElementById('users-list');
@@ -70,9 +74,9 @@ const renderUsers = (users) => {
   });
 
   arrayChats.forEach(chat => {
-      if (!arrayChats.includes(chat) && chat.includes('30370861') && chat!=='30370861_Soporte') {
-      usersToRemove.push(chat);
-    }
+    if (!users.includes(chat)) {
+    usersToRemove.push(chat);
+  }
   });
 
   usersToAdd.forEach(user => {

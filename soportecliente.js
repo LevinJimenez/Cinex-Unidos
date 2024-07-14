@@ -57,7 +57,8 @@ const renderUsers = (users) => {
     }
   });
   if (userFound == false){
-    alert('Soporte no encontrado, por favor intente nuevamente');
+    alert('Soporte no disponible, espere a que un empleado se conecte');
+    window.location.reload();
   }else{
     console.log(`Usuario encontrado: `);
     soporteChat();
